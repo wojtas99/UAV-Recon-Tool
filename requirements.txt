@@ -1,0 +1,10 @@
+UAVReconToolApp Requirements:
+	Gradle JDK : correto-11 \ Amazon Corretto 11.0.27
+	Android Gradle Plugin Version : 7.4.2
+	Gradle Version: 7.5
+
+UAVReconToolPlugin Requirements:
+	Gradle JDK : correto-11 \ Amazon Corretto 11.0.27
+	Android Gradle Plugin Version : 7.4.2
+	Gradle Version: 7.5
+	Building Options: civDebug
