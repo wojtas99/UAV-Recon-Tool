@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">UAVR Tools</string>
+    <!-- description -->
+    <string name="app_desc">Unmaned Aerial Vehicle Recon is Open Source tool that allows user to automate detection process.</string>
+    <string name="roll_n_pitch">Roll:\n Pitch:</string>
+
+
+</resources>

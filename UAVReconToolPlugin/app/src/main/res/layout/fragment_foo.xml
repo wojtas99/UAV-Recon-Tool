@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/firstTab_constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#333"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- SurfaceView filling the entire nested layout -->
+
+        <TextureView
+            android:id="@+id/droneCamera_textureView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/hideUI_Button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="40dp"
+            android:alpha="0.5"
+            android:background="@drawable/vision"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/userInterface_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:id="@+id/mapHolder_relativeLayout"
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:clickable="false"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/mCOP_lineCompassView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topToolHolder_linearLayout">
+
+                <LinearLayout
+                    android:id="@+id/mapContainer_linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circle_bg"
+                    android:clickable="true"
+                    android:clipToOutline="true"
+                    android:elevation="1dp"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:outlineProvider="background" />
+
+
+                <Button
+                    android:id="@+id/lockMap_Button"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:alpha="0.5"
+                    android:background="@drawable/lock_off" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/topToolHolder_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:alpha="0.6"
+                android:background="#333"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/operatorData_linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/operator_imageView"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/phone" />
+
+                    <LinearLayout
+                        android:id="@+id/gpsOperator_linearLayout"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/latOperator_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="14"
+                            android:text="Lat: NoGPS" />
+
+                        <TextView
+                            android:id="@+id/lonOperator_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="14"
+                            android:text="Lon: NoGPS" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/gpsOperator2_linearLayout"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/altOperator_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:maxLength="11"
+                            android:text="Alt: NoGPS"
+                            android:textAlignment="inherit" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/satelites_linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/satelite_imageView"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/gps_on"
+                            android:scaleX="-1" />
+
+                        <TextView
+                            android:id="@+id/satNumber_textView"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="10 sat" />
+
+                        <ImageView
+                            android:id="@+id/satSignal_imageView"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/signal3" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/droneData_linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="clip_horizontal"
+                    android:layout_weight="0.5"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:requiresFadingEdge="horizontal"
+                    android:scrollbarAlwaysDrawHorizontalTrack="true">
+
+                    <LinearLayout
+                        android:id="@+id/gpsDrone2_linearLayout"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/altDrone_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:maxLength="11"
+                            android:text="Alt: NoGPS"
+                            android:textAlignment="inherit" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/gpsDrone_linearLayout"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/latDrone_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="14"
+                            android:text="Lat: NoGPS" />
+
+                        <TextView
+                            android:id="@+id/lonDrone_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="14"
+                            android:text="Lon: NoGPS" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/drone_imageView"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/drone" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.atakmap.android.plugintemplate.LineCompassView
+                android:id="@+id/mCOP_lineCompassView"
+                android:layout_width="220dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:alpha="0.6"
+                android:background="#333"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/botToolHolder_linearLayout"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/botToolHolder_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:alpha="0.6"
+                android:background="#333"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/botLeftTools_linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/map_Button"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/map_off" />
+
+                    <Button
+                        android:id="@+id/crosshair_Button"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/crosshair_off" />
+
+                    <ImageView
+                        android:id="@+id/altitude_imageView"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/height" />
+
+                    <TextView
+                        android:id="@+id/altitude_textView"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:maxLength="7"
+                        android:text="100.1 m"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/distance_imageView"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/height"
+                        android:rotation="90" />
+
+                    <TextView
+                        android:id="@+id/distance_textView"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:maxLength="8"
+                        android:text="1000.1 m"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/botRightTools_linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="clip_horizontal"
+                    android:layout_weight="0.5"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/detector_Button"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/ai_off" />
+
+                    <Spinner
+                        android:id="@+id/models_Spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/btn_gray"
+                        android:popupBackground="@color/darker_gray"
+                        android:spinnerMode="dropdown" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/droneDataHolder_linearLayout"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:alpha="0.6"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/mCOP_lineCompassView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topToolHolder_linearLayout">
+
+                <TextView
+                    android:id="@+id/droneRoll_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="16"
+                    android:text="Drone Roll:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dronePitch_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="16"
+                    android:text="Drone Pitch:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/droneYaw_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="15"
+                    android:text="Drone Yaw:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/gimbalRoll_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="18"
+                    android:paddingTop="20dp"
+                    android:text="Gimbal Roll:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/gimbalPitch_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="19"
+                    android:text="Gimbal Pitch:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/gimbalYaw_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="17"
+                    android:text="Gimbal Yaw:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/crosshair_imageView"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:alpha="0.75"
+                android:background="@drawable/crosshair"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/mCOP_lineCompassView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/topToolHolder_linearLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!-- android:background="@android:drawable/divider_horizontal_bright"-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/secondTab_constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settingsViewHolder_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:alpha="0.6"
+            android:background="#333"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settingsView_constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/settingsIcon_imageView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="360dp"
+                    android:background="@drawable/setting"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/settings_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textAlignment="center"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/settingsIcon_imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/settingsOptions_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/settingsView_constraintLayout">
+
+                <TextView
+                    android:id="@+id/detecionVariables_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Detection variables"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/objectsDetect_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Objects to detect"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/objectsHeights_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Objects real heights"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/settingsHolder_linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsViewHolder_constraintLayout">
+
+            <LinearLayout
+                android:id="@+id/detectionVariables_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3333333333"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/threshold_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Threshold value"
+                    android:textSize="15sp" />
+
+                <SeekBar
+                    android:id="@+id/threshold_seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="100" />
+
+                <TextView
+                    android:id="@+id/thresholdValue_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0 %"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/bbox_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Bouding Box Size"
+                    android:textSize="15sp" />
+
+                <SeekBar
+                    android:id="@+id/bbox_seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="8"
+                    android:min="2" />
+
+                <TextView
+                    android:id="@+id/bboxValue_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="2 dp"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/frame_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Processing every"
+                    android:textSize="15sp" />
+
+                <SeekBar
+                    android:id="@+id/frame_seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="10"
+                    android:min="1" />
+
+                <TextView
+                    android:id="@+id/frameValue_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="1 frame"
+                    android:textSize="15sp" />
+
+                <CheckBox
+                    android:id="@+id/drawBbox_checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Draw Bouding Boxes"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/drawMarker_checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Draw Marker"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detectObjects_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3333333333"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/labels_listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/objectsHeights_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3333333333"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/avgHeight_listView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/thirdTab_constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/flightData_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/flightsData_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:visibility="gone" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/flightMetaData_constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/flightTitle_constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:alpha="0.6"
+                    android:background="#333"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/flightTitle_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Flight Title"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/back_Button"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/back_Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="◀ Back"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/flightsMetaData_recyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:clipToPadding="false"
+                    android:paddingBottom="16dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/flightTitle_constraintLayout"
+                    tools:visibility="gone" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Nested ConstraintLayout for SurfaceView -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
