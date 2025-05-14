@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+repositories {
+    mavenLocal()
+}
+
+android {
+    namespace 'com.example.msdksample'
+    compileSdk 34
+    useLibrary 'org.apache.http.legacy'
+
+
+    defaultConfig {
+        applicationId "com.example.msdksample"
+        minSdk 26
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //noinspection ChromeOsAbiSupport
+            abiFilters 'arm64-v8a' // MSDK only supports arm64-v8a architecture
+        }
+
+        // MSDK related so library
+        packagingOptions {
+            pickFirst 'lib/arm64-v8a/libc++_shared.so'
+            pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        }
+
+        // MSDK related so library
+        packagingOptions {
+            doNotStrip "*/*/libconstants.so"
+            doNotStrip "*/*/libdji_innertools.so"
+            doNotStrip "*/*/libdjibase.so"
+            doNotStrip "*/*/libDJICSDKCommon.so"
+            doNotStrip "*/*/libDJIFlySafeCore-CSDK.so"
+            doNotStrip "*/*/libdjifs_jni-CSDK.so"
+            doNotStrip "*/*/libDJIRegister.so"
+            doNotStrip "*/*/libdjisdk_jni.so"
+            doNotStrip "*/*/libDJIUpgradeCore.so"
+            doNotStrip "*/*/libDJIUpgradeJNI.so"
+            doNotStrip "*/*/libDJIWaypointV2Core-CSDK.so"
+            doNotStrip "*/*/libdjiwpv2-CSDK.so"
+            doNotStrip "*/*/libFlightRecordEngine.so"
+            doNotStrip "*/*/libvideo-framing.so"
+            doNotStrip "*/*/libwaes.so"
+            doNotStrip "*/*/libagora-rtsa-sdk.so"
+            doNotStrip "*/*/libc++.so"
+            doNotStrip "*/*/libc++_shared.so"
+            doNotStrip "*/*/libmrtc_28181.so"
+            doNotStrip "*/*/libmrtc_agora.so"
+            doNotStrip "*/*/libmrtc_core.so"
+            doNotStrip "*/*/libmrtc_core_jni.so"
+            doNotStrip "*/*/libmrtc_data.so"
+            doNotStrip "*/*/libmrtc_log.so"
+            doNotStrip "*/*/libmrtc_onvif.so"
+            doNotStrip "*/*/libmrtc_rtmp.so"
+            doNotStrip "*/*/libmrtc_rtsp.so"
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.12.0'
+
+
+    implementation 'com.dji:dji-sdk-v5-aircraft:5.8.0'
+    compileOnly 'com.dji:dji-sdk-v5-aircraft-provided:5.9.0'
+    runtimeOnly 'com.dji:dji-sdk-v5-networkImp:5.8.0'
+}

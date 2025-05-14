@@ -1,0 +1,18 @@
+<resources>
+    <string name="msdksample">UAV Recon Tool</string>
+    <string name="app_name">UAV Recon Tool</string>
+    <string name="action_settings">Settings</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="product_information">Product Information</string>
+    <string name="connection_loose">Status: No Product Connected</string>
+    <string name="model_not_available">Model Not Available</string>
+    <string name="push_info">Push Info</string>
+    <string name="sdk_version">DJI SDK Version: %1$s</string>
+    <string name="gps_signal_level">GPS Signal</string>
+    <string name="gps_satellite_count_na">N/A</string>
+    <string name="gpsLonLanDefault_none">00.0000000</string>
+    <string name="stream_offline">Stream: Offline</string>
+    <string name="start_stream">Start Stream</string>
+    <string name="stream_online">Stream: Online</string>
+    <string name="stop_stream">Stop Stream</string>
+</resources>

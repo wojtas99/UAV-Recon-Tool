@@ -1,0 +1,31 @@
+apply from:rootProject.file('dependencies.gradle')
+buildscript {
+    ext {
+        agp_version = '7.4.2'
+    }
+    ext.kotlin_version = "1.9.10"
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$agp_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
