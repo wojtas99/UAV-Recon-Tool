@@ -50,6 +50,30 @@ If you liked it or learned something from this project, please leave a star ⭐
   - Android Gradle Plugin Version : 7.4.2
   - Gradle Version: 7.5
   - Building Options: civDebug
+
+Also you have to define the debug.keystore and my-release-key.keystore:
+
+**debug.keystore:**
+```
+& "C:\Users\YourUserName\.jdks\corretto-11.0.27\bin\keytool.exe" -genkeypair `
+  -dname "CN=Android Debug,O=Android,C=US" `
+  -validity 9999 `
+  -keystore debug.keystore `
+  -alias androiddebugkey `
+  -keypass android `
+  -storepass android
+```
+**my-release-key.keystore:**
+```
+& "C:\Users\YourUserName\.jdks\corretto-11.0.27\bin\keytool.exe" -genkeypair `
+  -dname "CN=Android Release,O=Android,C=US" `
+  -validity 9999 `
+  -keystore my-release-key.keystore `
+  -alias androidreleasekey `
+  -keypass android `
+  -storepass android
+```
+
     
 # Example of use
 ![Example](https://github.com/user-attachments/assets/1a476412-a710-49bf-afcd-595862f3cfcb)
