@@ -73,7 +73,6 @@ Also you have to define the debug.keystore and release.keystore:
   -keypass android `
   -storepass android
 ```
-```
 
     
 # Example of use
