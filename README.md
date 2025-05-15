@@ -2,7 +2,7 @@
 :milky_way: ATAK plug-in that processes the live video stream from a DJI drone using AI models :milky_way:
 
 # Description
-Wanting to learn how to create plugins for the ATAK app, I created a simple plugin integrated with a DJI drone with ATAK.
+Wanting to learn how to create plugins for the ATAK app, I created a simple plugin which integrates a DJI drone with ATAK.
 
 
 Plugin allows you to display the video stream from the drone in the ATAK app and has also many useful features.
