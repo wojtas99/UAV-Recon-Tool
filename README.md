@@ -51,7 +51,7 @@ If you liked it or learned something from this project, please leave a star ⭐
   - Gradle Version: 7.5
   - Building Options: civDebug
 
-Also you have to define the debug.keystore and my-release-key.keystore:
+Also you have to define the debug.keystore and release.keystore:
 
 **debug.keystore:**
 ```
@@ -63,15 +63,16 @@ Also you have to define the debug.keystore and my-release-key.keystore:
   -keypass android `
   -storepass android
 ```
-**my-release-key.keystore:**
+**release.keystore:**
 ```
 & "C:\Users\YourUserName\.jdks\corretto-11.0.27\bin\keytool.exe" -genkeypair `
   -dname "CN=Android Release,O=Android,C=US" `
   -validity 9999 `
-  -keystore my-release-key.keystore `
+  -keystore release.keystore `
   -alias androidreleasekey `
   -keypass android `
   -storepass android
+```
 ```
 
     
