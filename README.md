@@ -1,22 +1,18 @@
 # UAV-Recon-Tool
-:milky_way: ATAK plug-in that processes the live video stream from a DJI drone using AI models :milky_way:
-
-# Description
-Wanting to learn how to create plugins for the ATAK app, I created a simple plugin which integrates a DJI drone with ATAK.
-
-
+ATAK plug-in that processes the live video stream from a DJI drone using AI models. 
 Plugin allows you to display the video stream from the drone in the ATAK app and has also many useful features.
-
-
 You can analyze video frame with the AI model of your choice ( in the case of the plugin, these are modified YOLO models, but you can upload your models as well).
-
-
 Then, after analysis, the distance to the object is calculated based on the telemetry from the drone, and the detected objects are located on the ATAK map. 
+Enhance situational awareness and accelerate decision-making by unifying live video, AI-driven analysis, and precise geospatial mapping into one tactical toolkit. The operator himself decides what which frame of the stream should be processed. He is responsible for the accuracy of estimating the distance to objects by selecting their heights, and decides which objects are to be detected and what the minimum accuracy must be , to be plotted on the map.
 
-Enhance situational awareness and accelerate decision-making by unifying live video, AI-driven analysis, and precise geospatial mapping into one tactical toolkit.
 
-If you liked it or learned something from this project, please leave a star ⭐
-
+# Table of Contents
+- [Key Features](#Key-Features)
+- [Supported Drones](#Supported-Drones)
+- [Requirements](#Requirements)
+- [Example Of Use](#Example-Of-Use)
+- [Plugin Tabs Overview](#Plugin-Tabs-Overview)
+- [App example](#App-example)
 
 # Key Features
 - Embed the drone’s camera feed directly within ATAK without switching apps.
@@ -30,9 +26,6 @@ If you liked it or learned something from this project, please leave a star ⭐
 - Distance from the drone to the operator
 - Archiving of flights made along with detected objects
 - Customization of the detection options of the selected AI model
-
-# Future plans
-- Add RTSP
 
 # Supported Drones
 ![image](https://github.com/user-attachments/assets/a3145583-e01d-4f9f-9a52-827c33d0abe9)
@@ -75,7 +68,7 @@ Also you have to define the debug.keystore and release.keystore:
 ```
 
     
-# Example of use
+# Example Of Use
 ![Example](https://github.com/user-attachments/assets/1a476412-a710-49bf-afcd-595862f3cfcb)
 
 
