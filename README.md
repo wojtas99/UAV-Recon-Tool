@@ -13,6 +13,7 @@ Enhance situational awareness and accelerate decision-making by unifying live vi
 - [Example Of Use](#Example-Of-Use)
 - [Plugin Tabs Overview](#Plugin-Tabs-Overview)
 - [App example](#App-example)
+- [Maintainers](#Maintainers)
 
 # Key Features
 - Embed the drone’s camera feed directly within ATAK without switching apps.
@@ -79,6 +80,11 @@ Also you have to define the debug.keystore and release.keystore:
 
 # App example
 ![AppExample](https://github.com/user-attachments/assets/b6e95847-379f-4c53-a4e1-fa731f7365b2)
+
+# Maintainers
+Project maintainers are:
+- Wojciech Krawczyk
+
 
 
 
