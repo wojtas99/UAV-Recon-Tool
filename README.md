@@ -1,4 +1,4 @@
-# UAV-Recon-Tool
+# MORE: Mobile Object Recognition Environment
 ATAK plug-in that processes the live video stream from a DJI drone using AI models. 
 Plugin allows you to display the video stream from the drone in the ATAK app and has also many useful features.
 You can analyze video frame with the AI model of your choice ( in the case of the plugin, these are modified YOLO models, but you can upload your models as well).
